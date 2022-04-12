@@ -45,7 +45,7 @@ example: (export where it is defined)
         console.log(name);
         greet();
 
-*defaults are exported after they are defined.
+*defaults are exported after they are defined or infront of function.
 
 
 Front-end libraries:
@@ -84,28 +84,34 @@ DevTools
 learn these concepts for react = components, props, state
 
 
-rfc
+rfc - boiler plate for starting component files.
 
 
 capturing events:
     - onclick event
+    - onChange (key presses)
 
 react files format:
     -import section
-    - app function section
-    - vanilla js section
+    - functional component section
+    - vanilla js section:
+        - variables section
+        - functions section
     - jsx section
-    - exports section (optional)
+    - exports section (optional or export before function name)
 
 
-MPA 
+MPA (multi-page apps)
+
     vs.
-SPA
+
+SPA (single-page apps)
+    ^ REACT
 
 
-use state is used to store data inside of a component
+useState --->  is used to store data inside of a component
     a hook from react
-    a hook is another piece of code to use in your code from the react package
+    a hook is another piece of code to use in your code from the react node package manager (npm)
     
     
     question of the day:
@@ -138,7 +144,31 @@ use state is used to store data inside of a component
         - useEffect(() => {}, [data]); ----> value in the array
         - useEffect(() => {}, [data, count]); ----> values in the array
     
-    
+useEffect hook ----> performing a function each time it is rendered.
+    - use cases:
+        - fetching data (api)
+        - reading from local storage
+        - registering and deregistering event listeners
+        - manually updating the DOM
+
+Dependency array for useEffect ---> controls when the useEffect function is fired.
+
+*/
+    let [data, setData] = useEffect({}) // set to an empty object because using fetch will respond back with a json object.
+
+    useEffect(() => { // 1st argument 
+        fetch('https://www.example.component')
+        .then(response = response.json())
+        .then(resData = setData(resData))
+    }, []) // 2nd argument, dependency array for identifying a variable that will change to trigger useEffect, or leave empty for it to happen without having an infinite loop, which would be without it at all. (hence 'Dependency Array')
+
+
+/*
+
+
+* by default useEffect will run on each render, but we can limit how often the useEffect fires.
+
+
     The component lifecycle:
     
     Mount
