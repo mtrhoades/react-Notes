@@ -1,18 +1,28 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import Product from "./components/Product";
+// IMPORTS
+import React, { useState } from 'react';
+import FunctionContextComponent from './components/FunctionContextComponent';
 
+// CREATING CONTEXT
+export const ThemeContext = React.createContext();
+
+// FUNCTIONAL COMPONENT
 export default function App() {
+  // VANILLA JS SECTION
+  const [ darkTheme, setDarkTheme] = useState(false);
+
+  // functions
+  const toggleTheme = () => {
+    setDarkTheme(prevDarkTheme => !prevDarkTheme)
+  }
+
+  // JSX SECTION
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/product/:productId" element={<Product />} />
-        </Routes>
-      </Router>
+      {/* Everything wrapped inside of ThemeContext.Provider gets the value={darkTheme} passed down to any of the children below. */}
+      <ThemeContext.Provider value={darkTheme}>
+        <button onClick={toggleTheme}>Toggle Theme</button>
+        <FunctionContextComponent />
+      </ThemeContext.Provider>
     </>
   );
 }

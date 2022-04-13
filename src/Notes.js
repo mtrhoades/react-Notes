@@ -139,10 +139,11 @@ useState --->  is used to store data inside of a component
     
     useEffect - import with useState from react
     
-        - useEffect(() => {}); ----> No dependency array
-        - useEffect(() => {}, []); -----> empty dependency array
-        - useEffect(() => {}, [data]); ----> value in the array
-        - useEffect(() => {}, [data, count]); ----> values in the array
+    Dependency array for useEffect ---> controls when the useEffect function is fired:
+        - useEffect(() => {}); ----> No dependency array, (runs on window load, and runs anytime any state changes)
+        - useEffect(() => {}, []); -----> empty dependency array, onMount (runs only once on window load)
+        - useEffect(() => {}, [data]); ----> value in the array (runs on window load and anytime that values state in the array changes)
+        - useEffect(() => {}, [data, count]); ----> values in the array (runs on window load and anytime both values states in the array changes)
     
 useEffect hook ----> performing a function each time it is rendered.
     - use cases:
@@ -151,7 +152,6 @@ useEffect hook ----> performing a function each time it is rendered.
         - registering and deregistering event listeners
         - manually updating the DOM
 
-Dependency array for useEffect ---> controls when the useEffect function is fired.
 
 */
     let [data, setData] = useEffect({}) // set to an empty object because using fetch will respond back with a json object.
@@ -160,14 +160,52 @@ Dependency array for useEffect ---> controls when the useEffect function is fire
         fetch('https://www.example.component')
         .then(response = response.json())
         .then(resData = setData(resData))
-    }, []) // 2nd argument, dependency array for identifying a variable that will change to trigger useEffect, or leave empty for it to happen without having an infinite loop, which would be without it at all. (hence 'Dependency Array')
+    }, []) // 2nd argument, dependency array for identifying a variables state that will change to trigger useEffect, or leave empty for it to happen anytime any state changes and on window load. (hence 'Dependency Array')
+    
+    
+    /*
+    
+* by default useEffect will run on each render, but we can limit how often the useEffect fires.
 
+    useEffect clean-up functions:
+    - use case: key press events with addEventListener() but after the addEventListener function runs you must clean it up so it doesn't keep running the same key press event over and over, so you remove it once it happens first:
+        - removeEventListener()
+
+        * example below *
+
+*/
+
+// funtion for pressing the keys and adding the text
+const handleUserKeyPress = (event) => {
+    if (event.keyCode === 32 || (event.keyCode >= 65 && event.keyCode <= 57)) {
+        setText(`${text}${event.key}`);
+    }
+}
+
+// useEffect function for event that happens when keys are pressed and calls above function
+useEffect (() => {
+    window.addEventListener("keydown", handleUserKeyPress);
+
+    return () => {
+        window.removeEventListener("keydown", handleUserKeyPress);
+    }
+});
 
 /*
 
+useContext: a hook to avoid prop drilling, which is passing the same props to ALL of the children. 
+    (App.js level 1 ---> to level 2 child component ---> to level 3 child component.... and so forth...)
+        -UseContext allows to pass props(data) to the exact child component you need. (directly)
+            - Contains a wrapper div with a value={some data}  
+ 
+            * example */
+                export const NameContext = React.createContext();
 
-* by default useEffect will run on each render, but we can limit how often the useEffect fires.
 
+
+
+
+/*
 
     The component lifecycle:
     
@@ -225,3 +263,15 @@ Dependency array for useEffect ---> controls when the useEffect function is fire
     
     
     
+Module 6:
+    
+
+
+
+
+
+
+
+
+
+    */
