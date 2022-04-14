@@ -198,11 +198,6 @@ useContext: a hook to avoid prop drilling, which is passing the same props to AL
         -UseContext allows to pass props(data) to the exact child component you need. (directly)
             - Contains a wrapper div with a value={some data}  
  
-            * example */
-                export const NameContext = React.createContext();
-
-
-
 
 
 /*
