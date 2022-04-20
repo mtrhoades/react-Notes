@@ -202,7 +202,9 @@ useContext: a hook to avoid prop drilling, which is passing the same props to AL
 
 /*
 
-    The component lifecycle:
+
+
+    The component (REACT) lifecycle:
     
     Mount
     
@@ -259,9 +261,38 @@ useContext: a hook to avoid prop drilling, which is passing the same props to AL
     
     
 Module 6:
+
+react bootstrap - styling library for react
+
+Module 7: 
+
+styled components
+    installing:
+        - npm i styled-components
+or      - npm i --save styled-components
+
+&& import:
+    - import styled from "styled-componenets";
+    - use backticks ``
+    example: portfolio file in my-sites folder.
+
+
+Tailwind and material UI
+    - styling libraries for react
+
+
+******************************** USE TAILWIND!! ****************************************************************
+import it and than use pre-determined classes to html attributes;
+
+
+Suspense API ---> waiting for content to load and showcasing that through loading gifs. (spinner)
+
+    - import from 'react'
+    - <Suspense fallback={<Spinner />}>
+    - react lazy-loading ---> allows you to load components lazily to allow for other critical items to render first.
+        - React.lazy(() => import('./OtherComponent'));
+
     
-
-
 
 
 
