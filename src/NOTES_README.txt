@@ -376,7 +376,17 @@ React-Redux:
     - Thunk
 
     
-
+Everything learned so far in REACT/REDUX class:
+    - componenets
+    - props
+    - state
+    - useState
+    - useEffect
+    - useRef
+    - useContext 
+    - bootstrap 
+    - Redux
+    - testing 
 
 
     */
