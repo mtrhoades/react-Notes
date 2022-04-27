@@ -360,7 +360,12 @@ Module 9: REDUX
 - Store: core of a redux application
 
 
-Redux concepts:
+    *** Redux:
+        - central data store for all app data
+        - any component can access data from it
+        - makes state management easier
+
+Redux concepts: 
     - initial state
     - action - updates the initial state
     - reducer - function for a list of actions to update state
@@ -376,7 +381,8 @@ React-Redux:
     - Thunk
 
     
-Everything learned so far in REACT/REDUX class:
+
+*** Everything learned so far in REACT/REDUX class: ***
     - componenets
     - props
     - state
@@ -387,6 +393,24 @@ Everything learned so far in REACT/REDUX class:
     - bootstrap 
     - Redux
     - testing 
+
+
+
+Module 10:
+
+Async with React-Redux ---> 
+
+    Thunk - a peice of code that does some delayed work
+
+    Middleware, currying, and the connect api
+
+
+
+
+
+
+
+
 
 
     */
